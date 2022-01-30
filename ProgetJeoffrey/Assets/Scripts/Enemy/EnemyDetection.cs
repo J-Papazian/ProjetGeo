@@ -26,4 +26,9 @@ public class EnemyDetection : MonoBehaviour
 		}
 
 	}
+
+	internal void SetRadius(float radiusSize) 
+	{
+
+    }
 }

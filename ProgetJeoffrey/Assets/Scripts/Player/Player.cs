@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField] CharacterData datas = null;
     [SerializeField] bool activePlayer = false;
     [Header("Attack")]
-    [SerializeField] float reloadAttack = 0.5f;
-    [SerializeField] ParticleSystem attackFX = null;
     [SerializeField] AttackZone attackZone = null;
     [Header("Animation helper")]
     [SerializeField] Transform inTarget;
@@ -29,6 +27,8 @@ public class Player : MonoBehaviour
     internal struct CurrentCharacterData 
     {
         internal int damage;
+        internal float reloadAttack;
+        internal ParticleSystem attackFX;
     }
 
     private void Start()
@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
         playerController.Attack_Callback += Attack;
 
         currentCharacterData.damage = datas.damage;
+        currentCharacterData.reloadAttack = datas.reloadAttack;
+        currentCharacterData.attackFX = datas.attackFX;
     }
 
 	internal Tween OutAnim (TweenCallback callback)
@@ -97,13 +99,13 @@ public class Player : MonoBehaviour
 
         canAttacking = false;
         attackZone.ActiveAttack();
-        attackFX.Play();
+        currentCharacterData.attackFX.Play();
         StartCoroutine(ReloadAttack());
     }
 
     IEnumerator ReloadAttack ()
 	{
-        yield return new WaitForSeconds(reloadAttack);
+        yield return new WaitForSeconds(currentCharacterData.reloadAttack);
         canAttacking = true;
     }
 

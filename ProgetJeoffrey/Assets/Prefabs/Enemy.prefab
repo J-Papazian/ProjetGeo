@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f943c4c7a9ce39346ae48b5c1751a5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detection: {fileID: 2236342633049781475}
   datas: {fileID: 11400000, guid: 0b912e371407c9b43945738cdc27c727, type: 2}
+  detection: {fileID: 2236342633049781475}
 --- !u!65 &2236342632413062672
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 7910671045002026062}
   - component: {fileID: 2007194554677841708}
   m_Layer: 7
-  m_Name: Sphere
+  m_Name: DebugSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

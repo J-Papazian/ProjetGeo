@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   damage: 25
+  reloadAttack: 0.5
+  attackFX: {fileID: 6071366861146590937, guid: d299b22ce201e89419bdf64a52d88f3a, type: 3}

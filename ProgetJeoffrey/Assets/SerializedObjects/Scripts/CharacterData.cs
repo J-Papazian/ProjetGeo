@@ -7,4 +7,6 @@ public class CharacterData : ScriptableObject
 {
     public int life = 100;
     public int damage = 25;
+    public float reloadAttack = 0.5f;
+    public ParticleSystem attackFX;
 }

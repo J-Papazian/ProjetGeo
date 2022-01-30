@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     internal struct CurrentEnemyData {
         internal int life;
         internal int damage;
+        internal float speed;
+        internal float radiusDetection;
     }
 
     void Start()
@@ -23,9 +25,12 @@ public class Enemy : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
 
         detection.PlayerDetected_Callback += PlayerDetected;
+        detection.SetRadius(datas.radiusDetection);
 
         currentEnemyData.life = datas.life;
         currentEnemyData.damage = datas.damage;
+        currentEnemyData.speed = datas.speed;
+        currentEnemyData.radiusDetection = datas.radiusDetection;
     }
 
 	private void Update()
