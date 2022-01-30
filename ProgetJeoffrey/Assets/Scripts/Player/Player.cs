@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+
 public class Player : MonoBehaviour
 {
+    [SerializeField] CharacterData datas = null;
     [SerializeField] bool activePlayer = false;
     [Header("Attack")]
     [SerializeField] float reloadAttack = 0.5f;
@@ -23,6 +25,12 @@ public class Player : MonoBehaviour
 
     private bool canAttacking = true;
 
+    internal CurrentCharacterData currentCharacterData;
+    internal struct CurrentCharacterData 
+    {
+        internal int damage;
+    }
+
     private void Start()
     {
         PlayerManager.Instance.InitPlayer(this, activePlayer);
@@ -31,6 +39,8 @@ public class Player : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         playerController.Attack_Callback += Attack;
+
+        currentCharacterData.damage = datas.damage;
     }
 
 	internal Tween OutAnim (TweenCallback callback)

@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] EnemyData datas = null;
     [SerializeField] EnemyDetection detection = null;
-    [SerializeField] float speed = 5.0f;
 
     private GameObject player = null;
     private bool goToPlayer = false;
 
     private Rigidbody rigidBody = null;
 
+    internal CurrentEnemyData currentEnemyData;
+    internal struct CurrentEnemyData {
+        internal int life;
+        internal int damage;
+    }
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
 
         detection.PlayerDetected_Callback += PlayerDetected;
+
+        currentEnemyData.life = datas.life;
+        currentEnemyData.damage = datas.damage;
     }
 
 	private void Update()
@@ -29,7 +38,7 @@ public class Enemy : MonoBehaviour
 	{
         Vector3 direction = player.transform.position - transform.position;
 
-        direction = (player.transform.position - transform.position).normalized * speed;
+        direction = (player.transform.position - transform.position).normalized * datas.speed;
 
         rigidBody.velocity = direction;
     }
@@ -44,4 +53,12 @@ public class Enemy : MonoBehaviour
 	{
         detection.PlayerDetected_Callback -= PlayerDetected;
 	}
+
+    internal void TakeDamage(int damage)
+    {
+        currentEnemyData.life -= damage;
+
+        if (currentEnemyData.life <= 0)
+            EnemyManager.Instance.EnemyDied(gameObject);
+    }
 }

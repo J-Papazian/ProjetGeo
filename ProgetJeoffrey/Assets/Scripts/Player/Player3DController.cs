@@ -38,31 +38,34 @@ public class Player3DController : MonoBehaviour
 		else if (horizontal < -0.01f)
 			transform.rotation = Quaternion.Euler(Vector3.zero);
 
-		// grounded
-		RaycastHit hit;
-		Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * (controller.height + 0.5f)/ 2.0f, Color.red);
-		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 1 * (controller.height + 0.5f) / 2.0f))
-			grounded = true;
-		else
-			grounded = false;
+        // grounded
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * (controller.height + 0.5f) / 2.0f, Color.red);
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 1 * (controller.height + 0.5f) / 2.0f))
+            grounded = true;
+        else
+            grounded = false;
 
-		// gravity
-		if (controller.isGrounded)
-			verticalSpeed = 0.0f;
-		else if (!grounded)
-			verticalSpeed -= gravity * Time.deltaTime;
+        // gravity
+        if (controller.isGrounded)
+            verticalSpeed = 0.0f;
+        else if (!grounded)
+            verticalSpeed -= gravity * Time.deltaTime;
 
-		// jump
-		if (Input.GetButtonDown("Jump") && grounded)
-		{
-			verticalSpeed = jumpTakeOffSpeed;
-			grounded = false;
-		}
-		else if (Input.GetButtonUp("Jump"))
-		{
-			if (verticalSpeed > 0)
-				verticalSpeed = verticalSpeed * 0.5f;
-		}
+        // jump
+        if (Input.GetButtonDown("Jump") && grounded) {
+            verticalSpeed = jumpTakeOffSpeed;
+            grounded = false;
+        } else if (Input.GetButtonUp("Jump")) {
+            if (verticalSpeed > 0)
+                verticalSpeed = verticalSpeed * 0.5f;
+        }
+
+		//if (controller.isGrounded && Input.GetButton("Jump")) {
+		//	moveDirection.y = jumpSpeed;
+		//}
+		//moveDirection.y -= gravity * Time.deltaTime;
+		//controller.Move(moveDirection * Time.deltaTime);
 
 		// compute
 		Vector3 direction = new Vector3(horizontal, 0.0f, 0.0f).normalized;

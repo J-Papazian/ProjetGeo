@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detection: {fileID: 2236342633049781475}
-  speed: 2.5
+  datas: {fileID: 11400000, guid: 0b912e371407c9b43945738cdc27c727, type: 2}
 --- !u!65 &2236342632413062672
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AttackZone : MonoBehaviour
 {
+    [SerializeField] Player player = null;
+
     private float force = 5.0f;
     private BoxCollider Collider = null;
 
@@ -35,6 +37,8 @@ public class AttackZone : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
 		{
             collision.gameObject.GetComponent<Rigidbody>().AddForce(transform.right * force, ForceMode.Impulse);
-		}
+            EnemyManager.Instance.EnemyTakeDamage(collision.gameObject.GetComponent<Enemy>(), player.currentCharacterData.damage);
+
+        }
 	}
 }

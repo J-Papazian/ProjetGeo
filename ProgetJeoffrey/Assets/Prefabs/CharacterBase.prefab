@@ -5016,6 +5016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8ca702125285443abc88517980caf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 7757795008403784252}
 --- !u!65 &2498181268600952996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5163,6 +5164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 961bdc6c0eb35614fb3913ba2412c122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  datas: {fileID: 11400000, guid: b36be58c7eec09d42846c5afa0249a63, type: 2}
   activePlayer: 0
   reloadAttack: 0.5
   attackFX: {fileID: 1047843712176790137}
